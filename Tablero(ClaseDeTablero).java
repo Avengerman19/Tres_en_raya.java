@@ -84,7 +84,6 @@ class Tablero {
     }
 
     private boolean verificarDiagonales(char jugador) {
-        // Diagonal principal
         boolean diagonalPrincipal = true;
         for (int i = 0; i < tamaño; i++) {
             if (tablero[i][i] != jugador) {
