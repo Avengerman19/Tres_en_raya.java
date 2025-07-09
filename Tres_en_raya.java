@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-/**
- * Clase principal que ejecuta el juego Tres en Raya
- */
 public class TresEnRaya {
     public static void main(String[] args) {
         JuegoTresEnRaya juego = new JuegoTresEnRaya();
@@ -10,9 +7,6 @@ public class TresEnRaya {
     }
 }
 
-/**
- * Clase que representa el tablero del juego
- */
 class Tablero {
     private char[][] tablero;
     private int tamaño;
@@ -33,15 +27,12 @@ class Tablero {
     
     public void mostrarTablero() {
         System.out.println("\n=== TABLERO ===");
-        
-        // Mostrar números de columna
         System.out.print("  ");
         for (int j = 0; j < tamaño; j++) {
             System.out.print("  " + j + " ");
         }
         System.out.println();
         
-        // Mostrar tablero con números de fila
         for (int i = 0; i < tamaño; i++) {
             System.out.print(i + " |");
             for (int j = 0; j < tamaño; j++) {
@@ -49,7 +40,6 @@ class Tablero {
             }
             System.out.println();
             
-            // Línea separadora
             System.out.print("  ");
             for (int j = 0; j < tamaño; j++) {
                 System.out.print("----");
@@ -61,11 +51,11 @@ class Tablero {
     
     public boolean realizarMovimiento(int fila, int columna, char jugador) {
         if (fila < 0 || fila >= tamaño || columna < 0 || columna >= tamaño) {
-            return false; // Coordenadas fuera de rango
+            return false; 
         }
         
         if (tablero[fila][columna] != ' ') {
-            return false; // Posición ocupada
+            return false; 
         }
         
         tablero[fila][columna] = jugador;
@@ -105,7 +95,7 @@ class Tablero {
     }
     
     private boolean verificarDiagonales(char jugador) {
-        // Diagonal principal
+        
         boolean diagonalPrincipal = true;
         for (int i = 0; i < tamaño; i++) {
             if (tablero[i][i] != jugador) {
@@ -114,7 +104,7 @@ class Tablero {
             }
         }
         
-        // Diagonal secundaria
+        
         boolean diagonalSecundaria = true;
         for (int i = 0; i < tamaño; i++) {
             if (tablero[i][tamaño - 1 - i] != jugador) {
@@ -142,9 +132,6 @@ class Tablero {
     }
 }
 
-/**
- * Clase que maneja la lógica del juego
- */
 class JuegoTresEnRaya {
     private Tablero tablero;
     private Scanner scanner;
@@ -171,11 +158,11 @@ class JuegoTresEnRaya {
             if (realizarTurno()) {
                 if (tablero.verificarGanador(jugadorActual)) {
                     tablero.mostrarTablero();
-                    System.out.println("🎉 ¡Felicitaciones! El jugador " + jugadorActual + " ha ganado!");
+                    System.out.println(" ¡Felicitaciones! El jugador " + jugadorActual + " ha ganado!");
                     juegoTerminado = true;
                 } else if (tablero.estaLleno()) {
                     tablero.mostrarTablero();
-                    System.out.println("🤝 ¡Es un empate! El tablero está lleno.");
+                    System.out.println(" ¡Es un empate! El tablero está lleno.");
                     juegoTerminado = true;
                 } else {
                     cambiarJugador();
@@ -190,12 +177,6 @@ class JuegoTresEnRaya {
         System.out.println("====================================");
         System.out.println("     BIENVENIDO AL TRES EN RAYA");
         System.out.println("====================================");
-        System.out.println("Instrucciones:");
-        System.out.println("- Los jugadores se turnan: X y O");
-        System.out.println("- Ingresa coordenadas como: fila columna");
-        System.out.println("- Ejemplo: 1 2 (fila 1, columna 2)");
-        System.out.println("- Gana quien complete una línea completa");
-        System.out.println("====================================");
     }
     
     private int solicitarTamañoTablero() {
@@ -208,14 +189,14 @@ class JuegoTresEnRaya {
                 tamaño = Integer.parseInt(scanner.nextLine().trim());
                 
                 if (tamaño < 3) {
-                    System.out.println("❌ Error: El tamaño debe ser al menos 3.");
+                    System.out.println(" Error: El tamaño debe ser al menos 3.");
                 } else {
                     entradaValida = true;
-                    System.out.println("✅
+                    System.out.println("
                  Tablero de " + tamaño + "x" + tamaño + " creado correctamente.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("❌ Error: Por favor ingresa un número válido.");
+                System.out.println(" Error: Por favor ingresa un número válido.");
             }
         }
         
@@ -267,10 +248,10 @@ class JuegoTresEnRaya {
         String respuesta = scanner.nextLine().trim().toLowerCase();
         
         if (respuesta.equals("s") || respuesta.equals("si") || respuesta.equals("sí")) {
-            jugadorActual = 'X'; // Reiniciar con jugador X
+            jugadorActual = 'X'; 
             iniciarJuego();
         } else {
-            System.out.println("¡Gracias por jugar! ¡Hasta la próxima! 👋");
+            System.out.println("¡Gracias por jugar! ¡Hasta la próxima! ");
         }
     }
 }
