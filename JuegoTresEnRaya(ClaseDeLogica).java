@@ -114,7 +114,7 @@ class JuegoTresEnRaya {
         String respuesta = scanner.nextLine().trim().toLowerCase();
 
         if (respuesta.equals("s") || respuesta.equals("si") || respuesta.equals("sí")) {
-            jugadorActual = 'X'; // Reiniciar con jugador X
+            jugadorActual = 'X'; 
             iniciarJuego();
         } else {
             System.out.println("¡Gracias por jugar! ¡Hasta la próxima! ");
